@@ -1,0 +1,168 @@
+
+openapi: "3.0.0"
+info:
+  title: "Arbeitsagentur Weiterbildungssuche API"
+  description: |
+   Eine Datenbank zu Entgelten für Berufstätigkeiten in Deutschland durchsuchen. 
+   
+   Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs. Folgende Client-Credentials können dafür verwendet werden:
+   
+   **ClientID:** a59294b2-8825-47d6-a6c0-1486f02cedb4
+   
+   **ClientSecret:** a3c97fc5-6644-4ec5-8234-66098fc71cc4 
+   
+   **Achtung**: Der generierte Token muss bei folgenden GET-requests an rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/entgelte/[KldB-Schlüssel] im header als 'OAuthAccessToken' inkludiert werden. KldB meint in diesem Fall die Klassifikation der Berufe 2010 (vgl. rest.arbeitsagentur.de/infosysbub/dkz-rest/pc/v1/kldb2010). Beispielsweise repräsentiert der KldB-Schlüssel 84304 "Berufe in der Hochschullehre und -forschung - hoch komplexe Tätigkeiten" 
+
+  version: "1.0.0"
+  contact:
+    name:  "AndreasFischer1985"
+    email: "andreasfischer1985@web.de"
+    url: "https://github.com/AndreasFischer1985/entgeltatlas-api"
+
+servers:
+  - url: "https://rest.arbeitsagentur.de/infosysbub/entgeltatlas"
+
+paths:
+  /pc/v1/entgelte/[KldB-Schlüssel]:
+    get:
+      summary: Entgeltatlas
+      description: "Der Entgeltatlas ermöglicht, Entgelte für unterschiedliche Berufstätigkeiten in Deutschland anhand von KldB-Nummern mit verschiedenen GET-Parametern zu filtern."
+      operationId: entgeltatlas
+      responses:
+        '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Response'
+      parameters:
+        - in: query
+          name: l
+          schema:
+            type: integer
+          example: 4
+          required: false
+
+        - in: query
+          name: r
+          schema:
+            type: integer
+          description: Region - 1=Deutschland; 2=Ostdeutschland; 3=Westdeutschland; 11=BaWü; 12=Bayern; 14=Berlin; 15=Brandenburg; 7=Bremen; 5=Hamburg; 9=Hessen; 16=Mecklenburg-Vorpommern; 6=Niedersachsen; 8=Nordrhein-Westfalen; 10=Rheinland-Pfalz; 13=Saarland; 17=Sachsen; 18=Sachsen-Anhalt; 4=Schleswig-Holstein; 19=Thüringen; 22=Dortmund; 20=Dresden; 21=Düsseldorf; 23=Essen; 24=Frankfurt am Main; 26=Hannover; 27=Köln; 28=Leipzig; 29=München; 25=Nürnberg; 30=Stuttgart (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/regionen).
+          example: 1
+          required: false
+
+        - in: query
+          name: g
+          schema:
+            type: integer
+          description: Geschlecht - 1=Gesamt, 2=Männer, 3=Frauen (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/geschlechter).
+          example: 1
+          required: false
+
+        - in: query
+          name: a
+          schema:
+            type: integer
+          description: Alter - 1=Gesamt; 2=unter 25; 3=25 bis unter 55; 4=ab 55 (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/alter).
+          example: 1
+          required: false
+
+        - in: query
+          name: b
+          schema:
+            type: integer
+          description: Branche - 1=Gesamt; 2=Land- und Forstwirtschaft, Fischerei; 3=produzierendes Gewerbe ohne Bau; 4=Baugewerbe; 5=Handel, Verkehr, Lagerei und Gastgewerbe; 6=Information und Kommunikation; 7=Finanz- und Verischerungsgewerbe; 8=Grundstücks- und Wohnungswesen; 9=Erbringung wirtschaftl. Dienstleistungen; 10=Öffentliche Verwaltung, schul-, Gesundheits-, Sozialwesen; 11=sonstige Dienstleistungen (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/branchen).
+          example: 1
+          required: false
+
+security: 
+  - clientCredAuth: 
+    - "read"
+
+components: 
+  securitySchemes:
+    clientCredAuth:    # <---- arbitrary name
+      type: oauth2
+      description: "Die Authentifizierung funktioniert per OAuth-2-Client Credentials mit JWTs. Client Credentials sind folgende:<br><br> **ClientID:** a59294b2-8825-47d6-a6c0-1486f02cedb4 <br> **ClientSecret:** a3c97fc5-6644-4ec5-8234-66098fc71cc4"
+      flows:
+        clientCredentials:  
+          tokenUrl: https://rest.arbeitsagentur.de/oauth/gettoken_cc
+          scopes: {}
+  schemas:    
+    Response:
+      type: array
+      items:
+        type: object
+        properties:
+          kldb: 
+            type: string
+            example: '84304'
+          region:
+            type: object
+            properties:
+              id: 
+                type: integer
+                example: 1
+              bezeichnung: 
+                type: string
+                example: Deutschland
+              schluessel: 
+                type: string
+                example: D
+              oberRegionId: 
+                type: string
+                example: null
+              oberRegionBezeichnung: 
+                type: string
+                example: null
+              beitragsBemessungsGrenze: 
+                type: integer
+                example: 6450
+          gender:
+            type: object
+            properties:
+              id: 
+                type: integer
+                example: 1
+              bezeichnung: 
+                type: string
+                example: Gesamt
+          ageCategory:
+            type: object
+            properties:
+              id: 
+                type: integer
+                example: 1
+              bezeichnung: 
+                type: string
+                example: Gesamt
+          performanceLevel:
+            type: object
+            properties:
+              id: 
+                type: integer
+                example: 4
+              bezeichnung: 
+                type: string
+                example: Experte
+          branche:
+            type: object
+            properties:
+              id: 
+                type: integer 
+                example: 1
+              bezeichnung: 
+                type: string
+                example: Gesamt
+          entgelt: 
+            type: integer
+            example: 4975
+          entgeltQ25: 
+            type: integer
+            example: 4389
+          entgeltQ75: 
+            type: integer
+            example: 6015
+          besetzung: 
+            type: integer
+            example: 109528
