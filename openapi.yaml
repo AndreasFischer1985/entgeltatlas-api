@@ -3,15 +3,15 @@ openapi: "3.0.0"
 info:
   title: "Arbeitsagentur Weiterbildungssuche API"
   description: |
-   Eine Datenbank zu Entgelten für Berufstätigkeiten in Deutschland durchsuchen. 
+   Eine Datenbank zu Entgelten fÃ¼r BerufstÃ¤tigkeiten in Deutschland durchsuchen. 
    
-   Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs. Folgende Client-Credentials können dafür verwendet werden:
+   Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs. Folgende Client-Credentials kÃ¶nnen dafÃ¼r verwendet werden:
    
    **ClientID:** a59294b2-8825-47d6-a6c0-1486f02cedb4
    
    **ClientSecret:** a3c97fc5-6644-4ec5-8234-66098fc71cc4 
    
-   **Achtung**: Der generierte Token muss bei folgenden GET-requests an rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/entgelte/[KldB-Schlüssel] im header als 'OAuthAccessToken' inkludiert werden. KldB meint in diesem Fall die Klassifikation der Berufe 2010 (vgl. rest.arbeitsagentur.de/infosysbub/dkz-rest/pc/v1/kldb2010). Beispielsweise repräsentiert der KldB-Schlüssel 84304 "Berufe in der Hochschullehre und -forschung - hoch komplexe Tätigkeiten" 
+   **Achtung**: Der generierte Token muss bei folgenden GET-requests an rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/entgelte/[KldB-SchlÃ¼ssel] im header als 'OAuthAccessToken' inkludiert werden. KldB meint in diesem Fall die Klassifikation der Berufe 2010 (vgl. rest.arbeitsagentur.de/infosysbub/dkz-rest/pc/v1/kldb2010). Beispielsweise reprÃ¤sentiert der KldB-SchlÃ¼ssel 84304 "Berufe in der Hochschullehre und -forschung - hoch komplexe TÃ¤tigkeiten" 
 
   version: "1.0.0"
   contact:
@@ -23,10 +23,10 @@ servers:
   - url: "https://rest.arbeitsagentur.de/infosysbub/entgeltatlas"
 
 paths:
-  /pc/v1/entgelte/[KldB-Schlüssel]:
+  /pc/v1/entgelte/[KldB-SchlÃ¼ssel]:
     get:
       summary: Entgeltatlas
-      description: "Der Entgeltatlas ermöglicht, Entgelte für unterschiedliche Berufstätigkeiten in Deutschland anhand von KldB-Nummern mit verschiedenen GET-Parametern zu filtern."
+      description: "Der Entgeltatlas ermÃ¶glicht, Entgelte fÃ¼r unterschiedliche BerufstÃ¤tigkeiten in Deutschland anhand von KldB-Nummern mit verschiedenen GET-Parametern zu filtern."
       operationId: entgeltatlas
       responses:
         '200':
@@ -47,7 +47,7 @@ paths:
           name: r
           schema:
             type: integer
-          description: Region - 1=Deutschland; 2=Ostdeutschland; 3=Westdeutschland; 11=BaWü; 12=Bayern; 14=Berlin; 15=Brandenburg; 7=Bremen; 5=Hamburg; 9=Hessen; 16=Mecklenburg-Vorpommern; 6=Niedersachsen; 8=Nordrhein-Westfalen; 10=Rheinland-Pfalz; 13=Saarland; 17=Sachsen; 18=Sachsen-Anhalt; 4=Schleswig-Holstein; 19=Thüringen; 22=Dortmund; 20=Dresden; 21=Düsseldorf; 23=Essen; 24=Frankfurt am Main; 26=Hannover; 27=Köln; 28=Leipzig; 29=München; 25=Nürnberg; 30=Stuttgart (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/regionen).
+          description: Region - 1=Deutschland; 2=Ostdeutschland; 3=Westdeutschland; 11=BaWÃ¼; 12=Bayern; 14=Berlin; 15=Brandenburg; 7=Bremen; 5=Hamburg; 9=Hessen; 16=Mecklenburg-Vorpommern; 6=Niedersachsen; 8=Nordrhein-Westfalen; 10=Rheinland-Pfalz; 13=Saarland; 17=Sachsen; 18=Sachsen-Anhalt; 4=Schleswig-Holstein; 19=ThÃ¼ringen; 22=Dortmund; 20=Dresden; 21=DÃ¼sseldorf; 23=Essen; 24=Frankfurt am Main; 26=Hannover; 27=KÃ¶ln; 28=Leipzig; 29=MÃ¼nchen; 25=NÃ¼rnberg; 30=Stuttgart (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/regionen).
           example: 1
           required: false
 
@@ -55,7 +55,7 @@ paths:
           name: g
           schema:
             type: integer
-          description: Geschlecht - 1=Gesamt, 2=Männer, 3=Frauen (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/geschlechter).
+          description: Geschlecht - 1=Gesamt, 2=MÃ¤nner, 3=Frauen (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/geschlechter).
           example: 1
           required: false
 
@@ -71,7 +71,7 @@ paths:
           name: b
           schema:
             type: integer
-          description: Branche - 1=Gesamt; 2=Land- und Forstwirtschaft, Fischerei; 3=produzierendes Gewerbe ohne Bau; 4=Baugewerbe; 5=Handel, Verkehr, Lagerei und Gastgewerbe; 6=Information und Kommunikation; 7=Finanz- und Verischerungsgewerbe; 8=Grundstücks- und Wohnungswesen; 9=Erbringung wirtschaftl. Dienstleistungen; 10=Öffentliche Verwaltung, schul-, Gesundheits-, Sozialwesen; 11=sonstige Dienstleistungen (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/branchen).
+          description: Branche - 1=Gesamt; 2=Land- und Forstwirtschaft, Fischerei; 3=produzierendes Gewerbe ohne Bau; 4=Baugewerbe; 5=Handel, Verkehr, Lagerei und Gastgewerbe; 6=Information und Kommunikation; 7=Finanz- und Verischerungsgewerbe; 8=GrundstÃ¼cks- und Wohnungswesen; 9=Erbringung wirtschaftl. Dienstleistungen; 10=Ã–ffentliche Verwaltung, schul-, Gesundheits-, Sozialwesen; 11=sonstige Dienstleistungen (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/branchen).
           example: 1
           required: false
 
