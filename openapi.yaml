@@ -1,7 +1,7 @@
 
 openapi: "3.0.0"
 info:
-  title: "Arbeitsagentur Weiterbildungssuche API"
+  title: "Arbeitsagentur Entgeltatlas API"
   description: |
    Eine Datenbank zu Entgelten für Berufstätigkeiten in Deutschland durchsuchen. 
    
