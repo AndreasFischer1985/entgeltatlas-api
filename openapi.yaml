@@ -110,11 +110,9 @@ components:
                 type: string
                 example: D
               oberRegionId: 
-                type: string
-                example: null
+                type: string                
               oberRegionBezeichnung: 
-                type: string
-                example: null
+                type: string                
               beitragsBemessungsGrenze: 
                 type: integer
                 example: 6450
