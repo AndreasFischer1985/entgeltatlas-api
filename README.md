@@ -31,6 +31,9 @@ Der generierte Token muss bei folgenden GET-requests an rest.arbeitsagentur.de/i
 Der Entgeltatlas ermöglicht, das Entgelt für verschiedene Berufstätigkeiten mit verschiedenen GET-Parametern zu filtern:
 
 
+### Filter
+
+
 **Parameter:** *l* (Optional)
 - 4
 
