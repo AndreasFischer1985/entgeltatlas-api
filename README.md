@@ -3,7 +3,7 @@ Die Bundesagentur für Arbeit verfügt über eine Datenbank zu Entgelten für un
 
 ## Authentifizierung
 Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs.
-Client Credentials sind folgende:
+Client Credentials sind, wie sich z.B: einem GET-request an https://web.arbeitsagentur.de/entgeltatlas/ entnehmen lässt, folgende:
 
 **ClientID:** a59294b2-8825-47d6-a6c0-1486f02cedb4
 
