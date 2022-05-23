@@ -5,19 +5,18 @@ Die Bundesagentur für Arbeit verfügt über eine Datenbank zu Entgelten für un
 Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs.
 Client Credentials sind, wie sich z.B: einem GET-request an https://web.arbeitsagentur.de/entgeltatlas/ entnehmen lässt, folgende:
 
-**ClientID:** a59294b2-8825-47d6-a6c0-1486f02cedb4
+**client_id:** a59294b2-8825-47d6-a6c0-1486f02cedb4
 
-**ClientSecret:** a3c97fc5-6644-4ec5-8234-66098fc71cc4
+**client_secret:** a3c97fc5-6644-4ec5-8234-66098fc71cc4
+
+**grant_type:** client_credentials
+
+Die Credentials sind im body POST-request an https://rest.arbeitsagentur.de/oauth/gettoken_cc zu senden.
 
 ```bash
-curl \
--H 'Host: rest.arbeitsagentur.de' \
--H 'Accept: */*' \
--H 'Content-Type: application/x-www-form-urlencoded; charset=utf-8' \
--H 'Accept-Language: de,en-US;q=0.7,en;q=0.3' \
--H 'User-Agent:  Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0' \
---data-binary "client_id=a59294b2-8825-47d6-a6c0-1486f02cedb4&client_secret=a3c97fc5-6644-4ec5-8234-66098fc71cc4&grant_type=client_credentials" \
---compressed 'https://rest.arbeitsagentur.de/oauth/gettoken_cc'
+token=$(curl \
+-d "client_id=a59294b2-8825-47d6-a6c0-1486f02cedb4&client_secret=a3c97fc5-6644-4ec5-8234-66098fc71cc4&grant_type=client_credentials" \
+-X POST 'https://rest.arbeitsagentur.de/oauth/gettoken_cc' |grep -Eo '[^"]{500,}'|head -n 1)
 ```
 
 Der generierte Token muss bei folgenden GET-requests an rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/entgelte/[KldB-Schlüssel] im header als 'OAuthAccessToken' inkludiert werden. KldB meint in diesem Fall die Klassifikation der Berufe 2010. Beispielsweise repräsentiert der KldB-Schlüssel 84304 "Berufe in der Hochschullehre und -forschung - hoch komplexe Tätigkeiten" (wie man z.B. hier nachschlagen kann: https://www.klassifikationsserver.de/klassService/jsp/common/url.jsf?item=8430&variant=kldb2010&detail=true - verifizieren lässt sich die Bedeutung der KldB-Nummer auch über eine Anfrage mit Token an https://rest.arbeitsagentur.de/infosysbub/dkz-rest/pc/v1//kldb2010?codenr=B%2084304 ).
@@ -109,16 +108,7 @@ Branche: 1=Gesamt; 2=Land- und Forstwirtschaft, Fischerei; 3=produzierendes Gewe
 ### Beispiel:
 
 ```bash
-wb=$(curl -m 60 -H "Host: rest.arbeitsagentur.de" \
--H "User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0" \
--H "Accept: application/json, text/plain, */*" \
--H "Accept-Language: de,en-US;q=0.7,en;q=0.3" \
--H "Accept-Encoding: gzip, deflate, br" \
--H "Origin: https://web.arbeitsagentur.de" \
--H "DNT: 1" \
--H "Connection: keep-alive" \
--H "Pragma: no-cache" \
--H "Cache-Control: no-cache" \
+wb=$(curl -m 60 \
 -H "OAuthAccessToken: $token" \
 'rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/entgelte/84304?l=4&r=25&b=1')
 ```
