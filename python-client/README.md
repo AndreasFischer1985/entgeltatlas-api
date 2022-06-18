@@ -109,6 +109,10 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Response](docs/Response.md)
+ - [ResponseInner](docs/ResponseInner.md)
+ - [ResponseInnerGender](docs/ResponseInnerGender.md)
+ - [ResponseInnerPerformanceLevel](docs/ResponseInnerPerformanceLevel.md)
+ - [ResponseInnerRegion](docs/ResponseInnerRegion.md)
 
 
 ## Documentation For Authorization
