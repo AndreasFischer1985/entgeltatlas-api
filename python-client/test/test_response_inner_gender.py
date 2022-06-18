@@ -12,16 +12,13 @@
 import sys
 import unittest
 
-from deutschland.entgeltatlas.model.response_inner import ResponseInner
+from deutschland.entgeltatlas.model.response_inner_gender import ResponseInnerGender
 
 from deutschland import entgeltatlas
 
-globals()["ResponseInner"] = ResponseInner
-from deutschland.entgeltatlas.model.response import Response
 
-
-class TestResponse(unittest.TestCase):
-    """Response unit test stubs"""
+class TestResponseInnerGender(unittest.TestCase):
+    """ResponseInnerGender unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,10 +26,10 @@ class TestResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testResponse(self):
-        """Test Response"""
+    def testResponseInnerGender(self):
+        """Test ResponseInnerGender"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = Response()  # noqa: E501
+        # model = ResponseInnerGender()  # noqa: E501
         pass
 
 

@@ -12,16 +12,15 @@
 import sys
 import unittest
 
-from deutschland.entgeltatlas.model.response_inner import ResponseInner
+from deutschland.entgeltatlas.model.response_inner_performance_level import (
+    ResponseInnerPerformanceLevel,
+)
 
 from deutschland import entgeltatlas
 
-globals()["ResponseInner"] = ResponseInner
-from deutschland.entgeltatlas.model.response import Response
 
-
-class TestResponse(unittest.TestCase):
-    """Response unit test stubs"""
+class TestResponseInnerPerformanceLevel(unittest.TestCase):
+    """ResponseInnerPerformanceLevel unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,10 +28,10 @@ class TestResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testResponse(self):
-        """Test Response"""
+    def testResponseInnerPerformanceLevel(self):
+        """Test ResponseInnerPerformanceLevel"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = Response()  # noqa: E501
+        # model = ResponseInnerPerformanceLevel()  # noqa: E501
         pass
 
 

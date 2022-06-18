@@ -6,6 +6,10 @@ README.md
 create_doc.py
 docs/DefaultApi.md
 docs/Response.md
+docs/ResponseInner.md
+docs/ResponseInnerGender.md
+docs/ResponseInnerPerformanceLevel.md
+docs/ResponseInnerRegion.md
 entgeltatlas/__init__.py
 entgeltatlas/api/__init__.py
 entgeltatlas/api/default_api.py
@@ -15,6 +19,10 @@ entgeltatlas/configuration.py
 entgeltatlas/exceptions.py
 entgeltatlas/model/__init__.py
 entgeltatlas/model/response.py
+entgeltatlas/model/response_inner.py
+entgeltatlas/model/response_inner_gender.py
+entgeltatlas/model/response_inner_performance_level.py
+entgeltatlas/model/response_inner_region.py
 entgeltatlas/model_utils.py
 entgeltatlas/models/__init__.py
 entgeltatlas/rest.py
@@ -29,4 +37,8 @@ test-requirements.txt
 test/__init__.py
 test/test_default_api.py
 test/test_response.py
+test/test_response_inner.py
+test/test_response_inner_gender.py
+test/test_response_inner_performance_level.py
+test/test_response_inner_region.py
 tox.ini

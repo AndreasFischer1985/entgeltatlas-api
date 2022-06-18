@@ -10,3 +10,9 @@
 # sys.setrecursionlimit(n)
 
 from deutschland.entgeltatlas.model.response import Response
+from deutschland.entgeltatlas.model.response_inner import ResponseInner
+from deutschland.entgeltatlas.model.response_inner_gender import ResponseInnerGender
+from deutschland.entgeltatlas.model.response_inner_performance_level import (
+    ResponseInnerPerformanceLevel,
+)
+from deutschland.entgeltatlas.model.response_inner_region import ResponseInnerRegion
