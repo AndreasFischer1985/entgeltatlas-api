@@ -4,10 +4,10 @@ Die Bundesagentur für Arbeit verfügt über eine Datenbank zu Entgelten für un
 ## Authentifizierung
 Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs.
 Client Credentials sind, wie sich z.B: einem GET-request an https://web.arbeitsagentur.de/entgeltatlas/ entnehmen lässt, folgende:
+  
+**client_id:** c4f0d292-9d0f-4763-87dd-d3f9e78fb006
 
-**client_id:** a59294b2-8825-47d6-a6c0-1486f02cedb4
-
-**client_secret:** a3c97fc5-6644-4ec5-8234-66098fc71cc4
+**client_secret:** 566c4dd6-942f-4cda-aad6-8d611c577107
 
 **grant_type:** client_credentials
 
@@ -15,7 +15,7 @@ Die Credentials sind im body eines POST-request an https://rest.arbeitsagentur.d
 
 ```bash
 token=$(curl \
--d "client_id=a59294b2-8825-47d6-a6c0-1486f02cedb4&client_secret=a3c97fc5-6644-4ec5-8234-66098fc71cc4&grant_type=client_credentials" \
+-d "client_id=c4f0d292-9d0f-4763-87dd-d3f9e78fb006&client_secret=566c4dd6-942f-4cda-aad6-8d611c577107&grant_type=client_credentials" \
 -X POST 'https://rest.arbeitsagentur.de/oauth/gettoken_cc' |grep -Eo '[^"]{500,}'|head -n 1)
 ```
 
