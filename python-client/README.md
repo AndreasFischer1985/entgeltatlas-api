@@ -3,9 +3,9 @@ Eine Datenbank zu Entgelten für Berufstätigkeiten in Deutschland durchsuchen.
 
 Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs. Folgende Client-Credentials können dafür verwendet werden:
 
-**ClientID:** a59294b2-8825-47d6-a6c0-1486f02cedb4
+**ClientID:** c4f0d292-9d0f-4763-87dd-d3f9e78fb006
 
-**ClientSecret:** a3c97fc5-6644-4ec5-8234-66098fc71cc4 
+**ClientSecret:** 566c4dd6-942f-4cda-aad6-8d611c577107 
 
 **Achtung**: Der generierte Token muss bei folgenden GET-requests an rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/entgelte/[KldB-Schlüssel] im header als 'OAuthAccessToken' inkludiert werden. KldB meint in diesem Fall die Klassifikation der Berufe 2010 (vgl. rest.arbeitsagentur.de/infosysbub/dkz-rest/pc/v1/kldb2010). Beispielsweise repräsentiert der KldB-Schlüssel 84304 \"Berufe in der Hochschullehre und -forschung - hoch komplexe Tätigkeiten\" 
 
