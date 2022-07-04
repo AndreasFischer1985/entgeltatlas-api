@@ -16,7 +16,7 @@ Die Credentials sind im body eines POST-request an https://rest.arbeitsagentur.d
 ```bash
 token=$(curl \
 -d "client_id=c4f0d292-9d0f-4763-87dd-d3f9e78fb006&client_secret=566c4dd6-942f-4cda-aad6-8d611c577107&grant_type=client_credentials" \
--X POST 'https://rest.arbeitsagentur.de/oauth/gettoken_cc' |grep -Eo '[^"]{500,}'|head -n 1)
+-X POST 'https://rest.arbeitsagentur.de/oauth/gettoken_cc' |grep -Eo '[^"]{400,}'|head -n 1)
 ```
 
 Der generierte Token muss bei folgenden GET-requests an rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/entgelte/[KldB-Schlüssel] im header als 'OAuthAccessToken' inkludiert werden. 
@@ -112,7 +112,7 @@ Branche: 1=Gesamt; 2=Land- und Forstwirtschaft, Fischerei; 3=produzierendes Gewe
 ```bash
 wb=$(curl -m 60 \
 -H "OAuthAccessToken: $token" \
-'rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/entgelte/84304?l=4&r=25&b=1')
+'https://rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/entgelte/84304?l=4&r=1&a=1&b=1')
 ```
 
 ## Weitere Endpunkte 
