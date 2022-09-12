@@ -21,7 +21,7 @@ token=$(curl \
 
 Der generierte Token muss bei folgenden GET-requests an https://rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/entgelte/[KldB-Schlüssel] im header als 'OAuthAccessToken' inkludiert werden. 
 
-KldB meint in diesem Fall die Klassifikation der Berufe 2010. Beispielsweise repräsentiert der KldB-Schlüssel 84304 "Berufe in der Hochschullehre und -forschung - hoch komplexe Tätigkeiten" (wie man z.B. hier nachschlagen kann: https://www.klassifikationsserver.de/klassService/jsp/common/url.jsf?item=8430&variant=kldb2010&detail=true - verifizieren lässt sich die Bedeutung der KldB-Nummer auch über eine Anfrage mit Token an https://rest.arbeitsagentur.de/infosysbub/dkz-rest/pc/v1//kldb2010?codenr=B%2084304 ).
+KldB meint in diesem Fall die Klassifikation der Berufe 2010. Akzeptiert werden KldB-Schlüssel mit 3 bis 5 Ziffern. Beispielsweise repräsentiert der KldB-Schlüssel 84304 "Berufe in der Hochschullehre und -forschung - hoch komplexe Tätigkeiten" (wie man z.B. hier nachschlagen kann: https://www.klassifikationsserver.de/klassService/jsp/common/url.jsf?item=8430&variant=kldb2010&detail=true - verifizieren lässt sich die Bedeutung der KldB-Nummer auch über eine Anfrage mit Token an https://rest.arbeitsagentur.de/infosysbub/dkz-rest/pc/v1//kldb2010?codenr=B%2084304 ).
 
 
 ## Entgeltatlas
@@ -36,7 +36,13 @@ Der Entgeltatlas ermöglicht, das Entgelt für verschiedene Berufstätigkeiten m
 
 
 **Parameter:** *l* (Optional)
+- 1
+- 2
+- 3
 - 4
+
+performance-level: 1=Helfer; 2=Fachkraft; 3=Spezialist 4=Experte.
+
 
 **Parameter:** *r* (Optional)
 - 1
