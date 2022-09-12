@@ -126,3 +126,6 @@ wb=$(curl -m 60 \
 - https://rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/mediandaten (mit GET-Parameter dkzIds, z.B. 77878 - potenziell mehrere, durch Kommata getrennt)
 - https://rest.arbeitsagentur.de/infosysbub/entgeltatlas/ct/v1/primaerer-median/77878
 - https://rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/regionen
+- https://rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/geschlechter
+- https://rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/alter
+- https://rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/branchen
