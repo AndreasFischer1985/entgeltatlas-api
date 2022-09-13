@@ -45,7 +45,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with entgeltatlas.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
-    l = 4 # int |  (optional)
+    l = 4 # int | Performance-level - 1=Helfer; 2=Fachkraft; 3=Spezialist 4=Experte. (optional)
     r = 1 # int | Region - 1=Deutschland; 2=Ostdeutschland; 3=Westdeutschland; 11=BaWü; 12=Bayern; 14=Berlin; 15=Brandenburg; 7=Bremen; 5=Hamburg; 9=Hessen; 16=Mecklenburg-Vorpommern; 6=Niedersachsen; 8=Nordrhein-Westfalen; 10=Rheinland-Pfalz; 13=Saarland; 17=Sachsen; 18=Sachsen-Anhalt; 4=Schleswig-Holstein; 19=Thüringen; 22=Dortmund; 20=Dresden; 21=Düsseldorf; 23=Essen; 24=Frankfurt am Main; 26=Hannover; 27=Köln; 28=Leipzig; 29=München; 25=Nürnberg; 30=Stuttgart (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/regionen). (optional)
     g = 1 # int | Geschlecht - 1=Gesamt, 2=Männer, 3=Frauen (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/geschlechter). (optional)
     a = 1 # int | Alter - 1=Gesamt; 2=unter 25; 3=25 bis unter 55; 4=ab 55 (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/alter). (optional)
@@ -66,7 +66,7 @@ with entgeltatlas.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **l** | **int**|  | [optional]
+ **l** | **int**| Performance-level - 1&#x3D;Helfer; 2&#x3D;Fachkraft; 3&#x3D;Spezialist 4&#x3D;Experte. | [optional]
  **r** | **int**| Region - 1&#x3D;Deutschland; 2&#x3D;Ostdeutschland; 3&#x3D;Westdeutschland; 11&#x3D;BaWü; 12&#x3D;Bayern; 14&#x3D;Berlin; 15&#x3D;Brandenburg; 7&#x3D;Bremen; 5&#x3D;Hamburg; 9&#x3D;Hessen; 16&#x3D;Mecklenburg-Vorpommern; 6&#x3D;Niedersachsen; 8&#x3D;Nordrhein-Westfalen; 10&#x3D;Rheinland-Pfalz; 13&#x3D;Saarland; 17&#x3D;Sachsen; 18&#x3D;Sachsen-Anhalt; 4&#x3D;Schleswig-Holstein; 19&#x3D;Thüringen; 22&#x3D;Dortmund; 20&#x3D;Dresden; 21&#x3D;Düsseldorf; 23&#x3D;Essen; 24&#x3D;Frankfurt am Main; 26&#x3D;Hannover; 27&#x3D;Köln; 28&#x3D;Leipzig; 29&#x3D;München; 25&#x3D;Nürnberg; 30&#x3D;Stuttgart (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/regionen). | [optional]
  **g** | **int**| Geschlecht - 1&#x3D;Gesamt, 2&#x3D;Männer, 3&#x3D;Frauen (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/geschlechter). | [optional]
  **a** | **int**| Alter - 1&#x3D;Gesamt; 2&#x3D;unter 25; 3&#x3D;25 bis unter 55; 4&#x3D;ab 55 (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/alter). | [optional]

@@ -1,7 +1,7 @@
 """
     Arbeitsagentur Entgeltatlas API
 
-    Eine Datenbank zu Entgelten für Berufstätigkeiten in Deutschland durchsuchen.   Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs. Folgende Client-Credentials können dafür verwendet werden:  **ClientID:** c4f0d292-9d0f-4763-87dd-d3f9e78fb006  **ClientSecret:** 566c4dd6-942f-4cda-aad6-8d611c577107   **Achtung**: Der generierte Token muss bei folgenden GET-requests an rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/entgelte/[KldB-Schlüssel] im header als 'OAuthAccessToken' inkludiert werden. KldB meint in diesem Fall die Klassifikation der Berufe 2010 (vgl. rest.arbeitsagentur.de/infosysbub/dkz-rest/pc/v1/kldb2010). Beispielsweise repräsentiert der KldB-Schlüssel 84304 \"Berufe in der Hochschullehre und -forschung - hoch komplexe Tätigkeiten\"    # noqa: E501
+    Eine Datenbank zu Entgelten für Berufstätigkeiten in Deutschland durchsuchen.   Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs. Folgende Client-Credentials können dafür verwendet werden:  **ClientID:** c4f0d292-9d0f-4763-87dd-d3f9e78fb006  **ClientSecret:** 566c4dd6-942f-4cda-aad6-8d611c577107   **Achtung**: Der generierte Token muss bei folgenden GET-requests an rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/entgelte/[KldB-Schlüssel] im header als 'OAuthAccessToken' inkludiert werden. KldB meint in diesem Fall die Klassifikation der Berufe 2010 (vgl. rest.arbeitsagentur.de/infosysbub/dkz-rest/pc/v1/kldb2010). Akzeptiert werden KldB-Schlüssel mit 3 bis 5 Ziffern. Beispielsweise repräsentiert der KldB-Schlüssel 84304 \"Berufe in der Hochschullehre und -forschung - hoch komplexe Tätigkeiten\"    # noqa: E501
 
     The version of the OpenAPI document: 1.0.0
     Contact: andreasfischer1985@web.de
@@ -104,7 +104,7 @@ class DefaultApi(object):
 
 
         Keyword Args:
-            l (int): [optional]
+            l (int): Performance-level - 1=Helfer; 2=Fachkraft; 3=Spezialist 4=Experte.. [optional]
             r (int): Region - 1=Deutschland; 2=Ostdeutschland; 3=Westdeutschland; 11=BaWü; 12=Bayern; 14=Berlin; 15=Brandenburg; 7=Bremen; 5=Hamburg; 9=Hessen; 16=Mecklenburg-Vorpommern; 6=Niedersachsen; 8=Nordrhein-Westfalen; 10=Rheinland-Pfalz; 13=Saarland; 17=Sachsen; 18=Sachsen-Anhalt; 4=Schleswig-Holstein; 19=Thüringen; 22=Dortmund; 20=Dresden; 21=Düsseldorf; 23=Essen; 24=Frankfurt am Main; 26=Hannover; 27=Köln; 28=Leipzig; 29=München; 25=Nürnberg; 30=Stuttgart (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/regionen).. [optional]
             g (int): Geschlecht - 1=Gesamt, 2=Männer, 3=Frauen (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/geschlechter).. [optional]
             a (int): Alter - 1=Gesamt; 2=unter 25; 3=25 bis unter 55; 4=ab 55 (vgl. rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/alter).. [optional]
