@@ -11,7 +11,9 @@ info:
    
    **ClientSecret:** 566c4dd6-942f-4cda-aad6-8d611c577107 
    
-   **Achtung**: Der generierte Token muss bei folgenden GET-requests an rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/entgelte/[KldB-Schlüssel] im header als 'OAuthAccessToken' inkludiert werden. KldB meint in diesem Fall die Klassifikation der Berufe 2010 (vgl. rest.arbeitsagentur.de/infosysbub/dkz-rest/pc/v1/kldb2010). Akzeptiert werden KldB-Schlüssel mit 3 bis 5 Ziffern. Beispielsweise repräsentiert der KldB-Schlüssel 84304 "Berufe in der Hochschullehre und -forschung - hoch komplexe Tätigkeiten" 
+   **Achtung**: Der generierte Token muss bei folgenden GET-requests an rest.arbeitsagentur.de/infosysbub/entgeltatlas/pc/v1/entgelte/[KldB-Schlüssel] im header als 'OAuthAccessToken' inkludiert werden. KldB meint in diesem Fall die Klassifikation der Berufe 2010 (vgl. rest.arbeitsagentur.de/infosysbub/dkz-rest/pc/v1/kldb2010). Akzeptiert werden KldB-Schlüssel mit 3 bis 5 Ziffern. Beispielsweise repräsentiert der KldB-Schlüssel 84304 "Berufe in der Hochschullehre und -forschung - hoch komplexe Tätigkeiten.
+
+  Alternativ kann man bei folgenden GET-requests auch direkt die *client_id* als Header-Parameter *'X-API-Key'* übergeben - *'OAuthAccessToken'* ist in diesem Fall nicht erforderlich. 🚀" 
 
   version: "1.0.0"
   contact:
@@ -76,19 +78,17 @@ paths:
           example: 1
           required: false
 
-security: 
-  - clientCredAuth: 
-    - "read"
+security:
+  - APIKeyHeaders: []
 
-components: 
+components:
   securitySchemes:
-    clientCredAuth:    # <---- arbitrary name
-      type: oauth2
-      description: "Die Authentifizierung funktioniert per OAuth-2-Client Credentials mit JWTs. Client Credentials sind folgende:<br><br> **ClientID:** a59294b2-8825-47d6-a6c0-1486f02cedb4 <br> **ClientSecret:** a3c97fc5-6644-4ec5-8234-66098fc71cc4"
-      flows:
-        clientCredentials:  
-          tokenUrl: https://rest.arbeitsagentur.de/oauth/gettoken_cc
-          scopes: {}
+    APIKeyHeaders:    
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: "X-API-Key ist die Client-ID c4f0d292-9d0f-4763-87dd-d3f9e78fb006"
+      
   schemas:    
     Response:
       type: array

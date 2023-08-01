@@ -23,6 +23,8 @@ Der generierte Token muss bei folgenden GET-requests an https://rest.arbeitsagen
 
 KldB meint in diesem Fall die Klassifikation der Berufe 2010. Akzeptiert werden KldB-Schlüssel mit 3 bis 5 Ziffern. Beispielsweise repräsentiert der KldB-Schlüssel 84304 "Berufe in der Hochschullehre und -forschung - hoch komplexe Tätigkeiten" (wie man z.B. hier nachschlagen kann: https://www.klassifikationsserver.de/klassService/jsp/common/url.jsf?item=8430&variant=kldb2010&detail=true - verifizieren lässt sich die Bedeutung der KldB-Nummer auch über eine Anfrage mit Token an https://rest.arbeitsagentur.de/infosysbub/dkz-rest/pc/v1//kldb2010?codenr=B%2084304 ).
 
+**Hinweis:** Alternativ kann man bei folgenden GET-requests auch direkt die *client_id* als Header-Parameter *'X-API-Key'* übergeben - *'OAuthAccessToken'* ist in diesem Fall nicht erforderlich. 🚀
+
 
 ## Entgeltatlas
 
